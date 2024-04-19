@@ -5,6 +5,7 @@ from aiogram.types import Message
 from aiogram.filters import Command
 import kb
 import text
+from utils import get_weather
 
 router = Router()
 
@@ -18,6 +19,7 @@ async def start_handler(msg: Message):
 async def get_cords(msg: Message):
     lon = msg.location.longitude
     lat = msg.location.latitude
-    await msg.answer(f'{lon}, {lat}')
+    for i, j in get_weather(lat, lon).items():
+        await msg.answer(f'Время: {i} - Коэффициент: {j}')
 
 

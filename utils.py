@@ -59,7 +59,6 @@ def get_weather(lat, lon):
     ))
 
     out = {i[0]: round(sum(i[1:]) / len(i[1:]), 2) for i in hourly_data if 0 not in i}
-    print(out)
 
     return out
 
